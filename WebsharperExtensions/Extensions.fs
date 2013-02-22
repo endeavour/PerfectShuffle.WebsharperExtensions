@@ -21,3 +21,14 @@ module Content =
      | CustomContent f -> CustomContent (fun context -> f (Context.map context actionMap))
      | PageContent f -> PageContent (fun context -> f (Context.map context actionMap))
 
+module Sitelet =
+  let FilterAction (ok: 'T -> bool) (sitelet: Sitelet<'T>) =
+    let route req =
+        match sitelet.Router.Route(req) with
+        | Some x when ok x -> Some x
+        | _ -> None
+    let link action =
+        if ok action then
+            sitelet.Router.Link(action)
+        else None
+    { sitelet with Router = Router.New route link }
