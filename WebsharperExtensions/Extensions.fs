@@ -32,3 +32,26 @@ module Sitelet =
             sitelet.Router.Link(action)
         else None
     { sitelet with Router = Router.New route link }
+
+module Enhance =
+  open IntelliFactory.WebSharper
+  open IntelliFactory.WebSharper.Html
+  open IntelliFactory.WebSharper.Formlet  
+    
+  [<JavaScript>]
+  let WithDebugOutput (formlet: Formlet<string>) =
+    Formlet.Do {
+      let! res = 
+        formlet
+        |> Formlet.LiftResult
+      return!
+        Formlet.OfElement <| fun _ ->
+          let status =
+            match res with
+            | Result.Success x -> "Success : " + x
+            | Result.Failure fs -> "Failure: " + (Seq.fold (+) "" fs)  
+          Div
+            [Attr.Style "border:2px solid #CCC; padding:10px; margin-top:10px"]  -< [Text status]
+    }    
+    |> Enhance.WithResetButton
+    |> Enhance.WithFormContainer  
