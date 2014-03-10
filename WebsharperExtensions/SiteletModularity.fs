@@ -1,4 +1,4 @@
-﻿namespace PerfectShuffle.WebsharperExtensions
+namespace PerfectShuffle.WebSharperExtensions
 open IntelliFactory.WebSharper.Sitelets
 
 module Context =
@@ -16,6 +16,14 @@ module Context =
       }
     newContext
 
+module Content =
+   let map (actionMap:'a -> 'b) (content:Content<'a>) : Content<'b> =
+     match content with
+     | CustomContent f -> CustomContent (fun context -> f (Context.map actionMap context))
+     | PageContent f -> PageContent (fun context -> f (Context.map actionMap context))
+     | CustomContentAsync f -> CustomContentAsync (fun context -> f (Context.map actionMap context))
+     | PageContentAsync f -> PageContentAsync (fun context -> f (Context.map actionMap context))
+
 module Sitelet =
   let FilterAction (ok: 'T -> bool) (sitelet: Sitelet<'T>) =
     let route req =
@@ -27,26 +35,3 @@ module Sitelet =
             sitelet.Router.Link(action)
         else None
     { sitelet with Router = Router.New route link }
-
-module Enhance =
-  open IntelliFactory.WebSharper
-  open IntelliFactory.WebSharper.Html
-  open IntelliFactory.WebSharper.Formlet  
-    
-  [<JavaScript>]
-  let WithDebugOutput (formlet: Formlet<string>) =
-    Formlet.Do {
-      let! res = 
-        formlet
-        |> Formlet.LiftResult
-      return!
-        Formlet.OfElement <| fun _ ->
-          let status =
-            match res with
-            | Result.Success x -> "Success : " + x
-            | Result.Failure fs -> "Failure: " + (Seq.fold (+) "" fs)  
-          Div
-            [Attr.Style "border:2px solid #CCC; padding:10px; margin-top:10px"]  -< [Text status]
-    }    
-    |> Enhance.WithResetButton
-    |> Enhance.WithFormContainer  
