@@ -27,6 +27,7 @@ module PigletHelpers =
     JQuery.JQuery.Of(el.Body).Bind("click", new Func<_,_,_>(fun _ ev ->
       ev.PreventDefault()
       )).Ignore
+    el
 
   let hasAtLeastOneErrorMessage result =
     match result with
