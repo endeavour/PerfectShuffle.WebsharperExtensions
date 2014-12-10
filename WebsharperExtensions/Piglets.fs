@@ -2,24 +2,24 @@
 open IntelliFactory.WebSharper
 open IntelliFactory.WebSharper.Piglets
 open IntelliFactory.WebSharper.Html
-open AttrExtensions
 
 [<JavaScript>]
 module PigletHelpers =
   
-  let InputWithLabel stream name labelText placeHolderText =
-    [
-      Label [Attr.Class "control-label"; Attr.For name; Text labelText]
-      Controls.Input stream -< [Attr.Class "form-control"; Attr.Id name; Attr.Name name; AttrExtensions.Placeholder placeHolderText]
-    ]
+  module Bootstrap =
+    let InputWithLabel stream name labelText placeHolderText =
+      [
+        Label [Attr.Class "control-label"; Attr.For name; Text labelText]
+        Controls.Input stream -< [Attr.Class "form-control"; Attr.Id name; Attr.Name name; AttrExtensions.Placeholder placeHolderText]
+      ]
 
-  let PasswordWithLabel stream name labelText placeHolderText =
-    [
-      Label [Attr.Class "control-label"; Attr.For name; Text labelText]
-      Controls.Password stream -< [Attr.Class "form-control"; Attr.Id name; Attr.Name name; AttrExtensions.Placeholder placeHolderText]
-    ]
+    let PasswordWithLabel stream name labelText placeHolderText =
+      [
+        Label [Attr.Class "control-label"; Attr.For name; Text labelText]
+        Controls.Password stream -< [Attr.Class "form-control"; Attr.Id name; Attr.Name name; AttrExtensions.Placeholder placeHolderText]
+      ]
 
-  let BootstrapFormGroupWithErrorHighlight = function Failure _ -> "form-group has-error" | Success _ -> "form-group has-success"
+    let FormGroupWithErrorHighlight = function Failure _ -> "form-group has-error" | Success _ -> "form-group has-success"
 
   /// Use to prevent a submit button from submitting a form when it is within <form> tags
   /// This is useful because we still get the benefit of 'enter' key hitting submit
