@@ -10,7 +10,7 @@
     <RestorePackages>true</RestorePackages>
     <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
-    <NuGetPackageImportStamp>ad3c5024</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>78425bc8</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -84,11 +84,11 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\..\..\packages\WebSharper.3.0.1.73-alpha\build\WebSharper.targets" Condition="Exists('..\..\..\packages\WebSharper.3.0.1.73-alpha\build\WebSharper.targets')" />
+  <Import Project="..\..\..\packages\WebSharper.3.0.3.76-alpha\build\WebSharper.targets" Condition="Exists('..\..\..\packages\WebSharper.3.0.3.76-alpha\build\WebSharper.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\WebSharper.3.0.1.73-alpha\build\WebSharper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\WebSharper.3.0.1.73-alpha\build\WebSharper.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\WebSharper.3.0.3.76-alpha\build\WebSharper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\WebSharper.3.0.3.76-alpha\build\WebSharper.targets'))" />
   </Target>
 </Project>
