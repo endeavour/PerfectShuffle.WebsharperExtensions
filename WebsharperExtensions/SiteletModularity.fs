@@ -35,3 +35,34 @@ module Sitelet =
             sitelet.Router.Link(action)
         else None
     { sitelet with Router = Router.New route link }
+
+  type UserFilter<'Action, 'User> =
+    {
+      VerifyUser: 'User -> bool
+      LoginRedirect: 'Action -> 'Action
+    }
+    
+  /// Constructs a protected sitelet given the filter specification.
+  let CustomProtect (getAuthenticatedUser : unit -> Async<'User>) (filter: UserFilter<'Action, 'User>) (site: Sitelet<'Action>)
+      : Sitelet<'Action> =
+      {
+          Router = site.Router
+          Controller =
+              {
+                  Handle =
+                    fun action ->   
+                      IntelliFactory.WebSharper.Sitelets.Content.CustomContentAsync <| fun ctx ->
+                        async {
+                        let! user = getAuthenticatedUser()
+
+                        if filter.VerifyUser user then
+                          let resp = IntelliFactory.WebSharper.Sitelets.Content.ToResponse (site.Controller.Handle action) ctx
+                          return resp
+                        else
+                          // Temporary redirect otherwise browser will cache it
+                          let failure = IntelliFactory.WebSharper.Sitelets.Content.RedirectTemporary (filter.LoginRedirect action)
+                          let resp = IntelliFactory.WebSharper.Sitelets.Content.ToResponse (failure) ctx
+                          return resp
+                        }
+              }
+      }
