@@ -1,7 +1,8 @@
 ﻿namespace PerfectShuffle.WebSharperExtensions
 open IntelliFactory.WebSharper
 open IntelliFactory.WebSharper.Piglets
-open IntelliFactory.WebSharper.Html
+open IntelliFactory.WebSharper.Html.Client
+open IntelliFactory.WebSharper.JavaScript.Pervasives
 
 [<JavaScript>]
 module PigletHelpers =
@@ -23,7 +24,7 @@ module PigletHelpers =
 
   /// Use to prevent a submit button from submitting a form when it is within <form> tags
   /// This is useful because we still get the benefit of 'enter' key hitting submit
-  let preventDefaultFormSubmission (el:#IPagelet) =
+  let preventDefaultFormSubmission (el:#Pagelet) =
     JQuery.JQuery.Of(el.Body).Bind("click", new Func<_,_,_>(fun _ ev ->
       ev.PreventDefault()
       )).Ignore
@@ -38,16 +39,16 @@ module PigletHelpers =
 [<JavaScript>]
 module Piglet =  
   [<JavaScript>]
-  let HideWhen (reader: Reader<'a>) (pred: Result<'a> -> bool) (element: Element) =
-      element
-      |>! OnAfterRender (fun el ->
-          let jQuery = JQuery.JQuery.Of(el.Dom)
+  let HideWhen (reader: Reader<'a>) (pred: Result<'a> -> bool) (element: Element) =            
+    
+      element |>! (fun el ->
+        let jQuery = JQuery.JQuery.Of(el.Dom)
           
-          let setVisibility isVisible =
-            if isVisible
-              then jQuery.Show() |> ignore
-              else jQuery.Hide() |> ignore
+        let setVisibility isVisible =
+          if isVisible
+            then jQuery.Show() |> ignore
+            else jQuery.Hide() |> ignore
 
-          setVisibility <| not (pred (reader.Latest))
-          reader.Subscribe <| fun (x:Result<'a>) -> setVisibility (not (pred x))
-          |> ignore)
+        setVisibility <| not (pred (reader.Latest))
+        reader.Subscribe <| fun (x:Result<'a>) -> setVisibility (not (pred x))
+        |> ignore)

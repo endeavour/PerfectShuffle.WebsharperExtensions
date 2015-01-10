@@ -10,7 +10,7 @@
     <RestorePackages>true</RestorePackages>
     <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
-    <NuGetPackageImportStamp>78425bc8</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>f6ccb697</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -67,8 +67,76 @@
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="IntelliFactory.Formlets">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.Formlets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.JavaScript">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.JavaScript.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.Reactive">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.Reactive.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Collections">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Control">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Control.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Core">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Formlets">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Formlets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Html.Client">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Html.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Html.Server">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Html.Server.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.InterfaceGenerator">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.InterfaceGenerator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.JavaScript">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.JavaScript.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.JQuery">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.JQuery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="IntelliFactory.WebSharper.Piglets">
-      <HintPath>..\..\..\packages\WebSharper.Piglets.3.0.3.171-alpha\lib\net40\IntelliFactory.WebSharper.Piglets.dll</HintPath>
+      <HintPath>..\..\..\packages\WebSharper.Piglets.3.0.7.177-alpha\lib\net40\IntelliFactory.WebSharper.Piglets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Sitelets">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Sitelets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Testing">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Testing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.WebSharper.Web">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.WebSharper.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IntelliFactory.Xml">
+      <HintPath>..\..\..\packages\WebSharper.3.0.12.88-alpha\lib\net40\IntelliFactory.Xml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
@@ -84,11 +152,11 @@
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\..\..\packages\WebSharper.3.0.3.76-alpha\build\WebSharper.targets" Condition="Exists('..\..\..\packages\WebSharper.3.0.3.76-alpha\build\WebSharper.targets')" />
+  <Import Project="..\..\..\packages\WebSharper.3.0.12.88-alpha\build\WebSharper.targets" Condition="Exists('..\..\..\packages\WebSharper.3.0.12.88-alpha\build\WebSharper.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\WebSharper.3.0.3.76-alpha\build\WebSharper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\WebSharper.3.0.3.76-alpha\build\WebSharper.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\WebSharper.3.0.12.88-alpha\build\WebSharper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\WebSharper.3.0.12.88-alpha\build\WebSharper.targets'))" />
   </Target>
 </Project>
