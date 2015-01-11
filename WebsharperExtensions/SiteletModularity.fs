@@ -24,17 +24,28 @@ module Content =
      | CustomContentAsync f -> CustomContentAsync (fun context -> f (Context.map actionMap context))
      | PageContentAsync f -> PageContentAsync (fun context -> f (Context.map actionMap context))
 
+   let unasync (content:Async<Content<'action>>) : Content<'action> =
+     Content.CustomContentAsync(fun ctx ->
+         async {
+           let! content = content
+           return Content.ToResponse content ctx            
+         }
+       )
+   
 module Sitelet =
-  let FilterAction (ok: 'T -> bool) (sitelet: Sitelet<'T>) =
+  let FilterRoute (ok: 'action -> bool) (router:Router<'action>) =
     let route req =
-        match sitelet.Router.Route(req) with
+        match router.Route(req) with
         | Some x when ok x -> Some x
         | _ -> None
     let link action =
         if ok action then
-            sitelet.Router.Link(action)
+            router.Link(action)
         else None
-    { sitelet with Router = Router.New route link }
+    Router.New route link
+  
+  let FilterAction (ok: 'action -> bool) (sitelet: Sitelet<'action>) =
+    { sitelet with Router = FilterRoute ok sitelet.Router }
 
   type UserFilter<'Action, 'User> =
     {
@@ -43,10 +54,10 @@ module Sitelet =
     }
     
   /// Constructs a protected sitelet given the filter specification.
-  let CustomProtect (getAuthenticatedUser : unit -> Async<'User>) (filter: UserFilter<'Action, 'User>) (site: Sitelet<'Action>)
+  let CustomProtect (getAuthenticatedUser : unit -> Async<'User>) (filter: UserFilter<'Action, 'User>) (sitelet: Sitelet<'Action>)
       : Sitelet<'Action> =
       {
-          Router = site.Router
+          Router = sitelet.Router
           Controller =
               {
                   Handle =
@@ -56,7 +67,7 @@ module Sitelet =
                         let! user = getAuthenticatedUser()
 
                         if filter.VerifyUser user then
-                          let resp = IntelliFactory.WebSharper.Sitelets.Content.ToResponse (site.Controller.Handle action) ctx
+                          let resp = IntelliFactory.WebSharper.Sitelets.Content.ToResponse (sitelet.Controller.Handle action) ctx
                           return resp
                         else
                           // Temporary redirect otherwise browser will cache it
