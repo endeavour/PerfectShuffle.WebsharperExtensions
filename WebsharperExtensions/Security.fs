@@ -94,6 +94,22 @@ module Cookies =
      member this.Delete() =
        deleteCookie this.Name
 
+module CSRF =
+  
+  let getCsrfTokenValueFromRequest (cookieKey:string) (request:IntelliFactory.WebSharper.Sitelets.Http.Request) =
+    let cookies =
+      request.Cookies.AllKeys
+      |> Array.map (fun k -> k, request.Cookies.[k])
+      |> Map.ofSeq
+
+    match cookies.TryFind cookieKey with
+    | Some(v) -> Some(v.Value)
+    | None -> None
+
+  let verifyRequest (cookieKey:string) (request:IntelliFactory.WebSharper.Sitelets.Http.Request) (token:string) =
+    match getCsrfTokenValueFromRequest cookieKey request with
+    | Some(v) when v = token -> true
+    | _ -> false
 
 module AspNetSecurity =
   open Cookies
