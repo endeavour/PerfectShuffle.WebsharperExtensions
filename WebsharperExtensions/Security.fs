@@ -74,7 +74,25 @@ module Cookies =
   
   [<Inline("document.cookie = $name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'")>]
   let deleteCookie (name:string) : unit = failwith "inlined"
-    
+
+  [<Inline("document.cookie")>]
+  let private getCookieRaw() : string = failwith "inlined"
+
+  [<JavaScript>]
+  let getCookies() =
+    // sample: "CSRFCookie=wtew7p05y3vf8ywx; TEST=TEST; jwtToken=ew0KICAiYLDXpm97ze3hd-PwXAmpHiDbkHYZk"
+    let cookieString = getCookieRaw()
+    let cookies =
+      cookieString.Split([|"; "|], StringSplitOptions.RemoveEmptyEntries)
+      |> Seq.map (fun x ->
+        let equalsIndex = x.IndexOf('=')
+        x.Substring(0, equalsIndex), x.Substring(equalsIndex + 1))
+      |> Map.ofSeq
+
+    IntelliFactory.WebSharper.JavaScript.Console.Log cookies
+
+    cookies
+
   type CookieExpiry =
   | Session
   | Persistent of DateTime
