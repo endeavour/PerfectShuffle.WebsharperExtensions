@@ -52,3 +52,6 @@ module Piglet =
         setVisibility <| not (pred (reader.Latest))
         reader.Subscribe <| fun (x:Result<'a>) -> setVisibility (not (pred x))
         |> ignore)
+
+  [<JavaScript>]
+  let ShowWhen (reader: Reader<'a>) (pred: Result<'a> -> bool) (element: Element) = HideWhen reader (pred >> not) element

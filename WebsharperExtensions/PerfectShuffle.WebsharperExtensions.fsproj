@@ -58,6 +58,7 @@
     <Compile Include="SiteletModularity.fs" />
     <Compile Include="MarkupExtensions.fs" />
     <Compile Include="UIFrameworks.fs" />
+    <Compile Include="JsHelpers.fs" />
     <Compile Include="Piglets.fs" />
     <Compile Include="Security.fs" />
     <Compile Include="SinglePageApplications.fs" />
