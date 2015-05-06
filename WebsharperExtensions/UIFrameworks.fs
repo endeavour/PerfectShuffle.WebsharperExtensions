@@ -1,9 +1,9 @@
 ﻿namespace PerfectShuffle.WebSharperExtensions
 
-open IntelliFactory.WebSharper
-open IntelliFactory.WebSharper.Html
+open WebSharper
+open WebSharper.Html
 
-[<Require(typeof<IntelliFactory.WebSharper.JQuery.Resources.JQuery>)>]
+[<Require(typeof<WebSharper.JQuery.Resources.JQuery>)>]
 type BootstrapResource() =
   inherit Resources.BaseResource(
     "/javascripts/bootstrap", //base URI
@@ -21,7 +21,7 @@ type BootstrapResource() =
     "transition.js"
     )
 
-[<Require(typeof<IntelliFactory.WebSharper.JQuery.Resources.JQuery>)>]
+[<Require(typeof<WebSharper.JQuery.Resources.JQuery>)>]
 type SemanticUIResource() =
   inherit Resources.BaseResource(
     "/javascripts/semantic-ui", //base URI

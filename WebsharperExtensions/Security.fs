@@ -5,7 +5,7 @@ module CrossPlatform =
 
 module Cookies =
   open System
-  open IntelliFactory.WebSharper
+  open WebSharper
   
   let getRequestCookies() =
     seq {
@@ -89,7 +89,7 @@ module Cookies =
         x.Substring(0, equalsIndex), x.Substring(equalsIndex + 1))
       |> Map.ofSeq
 
-    IntelliFactory.WebSharper.JavaScript.Console.Log cookies
+    WebSharper.JavaScript.Console.Log cookies
 
     cookies
 
@@ -114,7 +114,7 @@ module Cookies =
 
 module CSRF =
   
-  let getCsrfTokenValueFromRequest (cookieKey:string) (request:IntelliFactory.WebSharper.Sitelets.Http.Request) =
+  let getCsrfTokenValueFromRequest (cookieKey:string) (request:WebSharper.Sitelets.Http.Request) =
     let cookies =
       request.Cookies.AllKeys
       |> Array.map (fun k -> k, request.Cookies.[k])
@@ -124,7 +124,7 @@ module CSRF =
     | Some(v) -> Some(v.Value)
     | None -> None
 
-  let verifyRequest (cookieKey:string) (request:IntelliFactory.WebSharper.Sitelets.Http.Request) (token:string) =
+  let verifyRequest (cookieKey:string) (request:WebSharper.Sitelets.Http.Request) (token:string) =
     match getCsrfTokenValueFromRequest cookieKey request with
     | Some(v) when v = token -> true
     | _ -> false
@@ -149,15 +149,19 @@ module AspNetSecurity =
   let authCookieName = FormsAuthentication.FormsCookieName
 
   let getLoggedInUser() =
+    async {
     try
-      match IntelliFactory.WebSharper.Sitelets.UserSession.GetLoggedInUser() with
-      | Some(email) -> Some(email) 
-      | None -> None
+      let! user = WebSharper.Web.Remoting.GetContext().UserSession.GetLoggedInUser()
+      return
+        match user with
+        | Some(email) -> Some(email)
+        | None -> None
     with
       | :? System.NullReferenceException ->
         // Probably server was restarted and machine key changed so session no longer valid!
-        IntelliFactory.WebSharper.Sitelets.UserSession.Logout()
-        None
+        do! WebSharper.Web.Remoting.GetContext().UserSession.Logout()
+        return None
+    }
 
   let createSessionCSRFToken() =
     let key = "CSRFToken"

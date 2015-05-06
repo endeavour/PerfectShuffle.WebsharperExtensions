@@ -1,8 +1,9 @@
 ﻿namespace PerfectShuffle.WebSharperExtensions
-open IntelliFactory.WebSharper
-open IntelliFactory.WebSharper.Piglets
-open IntelliFactory.WebSharper.Html.Client
-open IntelliFactory.WebSharper.JavaScript.Pervasives
+
+open WebSharper
+open WebSharper.Piglets
+open WebSharper.Html.Client
+open WebSharper.JavaScript.Pervasives
 
 [<JavaScript>]
 module PigletHelpers =
@@ -25,9 +26,9 @@ module PigletHelpers =
   /// Use to prevent a submit button from submitting a form when it is within <form> tags
   /// This is useful because we still get the benefit of 'enter' key hitting submit
   let preventDefaultFormSubmission (el:#Pagelet) =
-    JQuery.JQuery.Of(el.Body).Bind("click", new Func<_,_,_>(fun _ ev ->
+    JQuery.JQuery.Of(el.Body).Bind("click", fun _ ev ->
       ev.PreventDefault()
-      )).Ignore
+      ).Ignore
     el
 
   let hasAtLeastOneErrorMessage result =

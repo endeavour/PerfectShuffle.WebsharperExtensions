@@ -1,5 +1,5 @@
 namespace PerfectShuffle.WebSharperExtensions
-open IntelliFactory.WebSharper.Sitelets
+open WebSharper.Sitelets
 
 module Context =
   let map (inverseActionMap:'b -> 'a) (context:Context<'a>) : Context<'b> =
@@ -13,6 +13,7 @@ module Context =
         ResourceContext = context.ResourceContext
         Request = context.Request
         RootFolder = context.RootFolder
+        UserSession = context.UserSession
       }
     newContext
 
@@ -62,17 +63,17 @@ module Sitelet =
               {
                   Handle =
                     fun action ->   
-                      IntelliFactory.WebSharper.Sitelets.Content.CustomContentAsync <| fun ctx ->
+                      WebSharper.Sitelets.Content.CustomContentAsync <| fun ctx ->
                         async {
                         let! user = getAuthenticatedUser()
 
                         if filter.VerifyUser user then
-                          let resp = IntelliFactory.WebSharper.Sitelets.Content.ToResponse (sitelet.Controller.Handle action) ctx
+                          let resp = WebSharper.Sitelets.Content.ToResponse (sitelet.Controller.Handle action) ctx
                           return resp
                         else
                           // Temporary redirect otherwise browser will cache it
-                          let failure = IntelliFactory.WebSharper.Sitelets.Content.RedirectTemporary (filter.LoginRedirect action)
-                          let resp = IntelliFactory.WebSharper.Sitelets.Content.ToResponse (failure) ctx
+                          let failure = WebSharper.Sitelets.Content.RedirectTemporary (filter.LoginRedirect action)
+                          let resp = WebSharper.Sitelets.Content.ToResponse (failure) ctx
                           return resp
                         }
               }

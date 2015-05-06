@@ -1,7 +1,7 @@
 ﻿namespace PerfectShuffle.WebSharperExtensions
 
 module SPA =
-  open IntelliFactory.WebSharper
+  open WebSharper
 
   [<JavaScript>]
   type MessageBus<'TMsg>() =
@@ -17,7 +17,7 @@ module SPA =
   module BrowserHistory =
     // See: https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history
   
-    let history = IntelliFactory.WebSharper.JavaScript.JS.Window.History
+    let history = WebSharper.JavaScript.JS.Window.History
   
     let pushState state url =
       history.PushState(state, "", url)
@@ -25,4 +25,4 @@ module SPA =
     let replaceState state url =
       history.ReplaceState(state, "", url)
 
-    let onPopState = IntelliFactory.WebSharper.JavaScript.JS.Window.Onpopstate
+    let onPopState = WebSharper.JavaScript.JS.Window.Onpopstate
