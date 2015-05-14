@@ -68,6 +68,10 @@
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="FSharp.Data">
+      <HintPath>..\packages\FSharp.Data.2.1.1\lib\net40\FSharp.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="IntelliFactory.Reactive">
       <HintPath>..\..\..\packages\IntelliFactory.Reactive.3.0.22.24\lib\net40\IntelliFactory.Reactive.dll</HintPath>
       <Private>True</Private>
@@ -77,10 +81,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="PerfectShuffle.Security">
+      <HintPath>..\packages\PerfectShuffle.Security.0.1\lib\PerfectShuffle.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebSharper.Collections">
       <HintPath>..\..\..\packages\WebSharper.3.0.54.140\lib\net40\WebSharper.Collections.dll</HintPath>
       <Private>True</Private>
@@ -137,13 +146,6 @@
       <HintPath>..\..\..\packages\WebSharper.3.0.54.140\lib\net40\WebSharper.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\PerfectShuffle.OAuth\PerfectShuffle.OAuth\PerfectShuffle.AuthenticationTools.fsproj">
-      <Name>PerfectShuffle.AuthenticationTools</Name>
-      <Project>{9198d786-b7c9-46bc-8a4f-e66bbb6895d5}</Project>
-      <Private>True</Private>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="..\..\..\packages\WebSharper.3.0.54.140\build\WebSharper.targets" Condition="Exists('..\..\..\packages\WebSharper.3.0.54.140\build\WebSharper.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
