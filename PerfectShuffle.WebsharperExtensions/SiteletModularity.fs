@@ -1,4 +1,4 @@
-namespace PerfectShuffle.WebSharperExtensions
+namespace PerfectShuffle.WebsharperExtensions
 open WebSharper.Sitelets
 
 module Context =
@@ -14,7 +14,6 @@ module Context =
         Request = context.Request
         RootFolder = context.RootFolder
         UserSession = context.UserSession
-        Environment = context.Environment
       }
     newContext
 

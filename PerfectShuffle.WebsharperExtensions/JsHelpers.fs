@@ -1,4 +1,4 @@
-﻿namespace PerfectShuffle.WebSharperExtensions
+﻿namespace PerfectShuffle.WebsharperExtensions
 
 module JsHelpers =
   open WebSharper
