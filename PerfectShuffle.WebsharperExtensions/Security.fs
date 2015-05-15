@@ -172,10 +172,8 @@ module AspNetSecurity =
       let token = session.[key] :?> string
       match token with
       | null ->
-        // TODO: Might want to remove the dependency on another project, would perhaps
-        // be nicer if this project was self-contained.
         let nonce = PerfectShuffle.Security.TokenGeneration.createRandomBase36Token 64
-
+        
         let csrfToken = sessionId + nonce
         session.[key] <- csrfToken
         csrfToken
