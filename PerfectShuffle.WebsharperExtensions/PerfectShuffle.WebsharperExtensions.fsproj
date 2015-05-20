@@ -63,6 +63,7 @@
     <Content Include="app.config" />
     <Compile Include="SiteletModularity.fs" />
     <Compile Include="MarkupExtensions.fs" />
+    <Compile Include="UINext.fs" />
     <Compile Include="UIFrameworks.fs" />
     <Compile Include="JsHelpers.fs" />
     <Compile Include="Piglets.fs" />
@@ -145,6 +146,14 @@
     </Reference>
     <Reference Include="WebSharper.Testing">
       <HintPath>..\packages\WebSharper.3.0.59.145\lib\net40\WebSharper.Testing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebSharper.UI.Next">
+      <HintPath>..\packages\WebSharper.UI.Next.3.1.2.126\lib\net40\WebSharper.UI.Next.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebSharper.UI.Next.Templating">
+      <HintPath>..\packages\WebSharper.UI.Next.3.1.2.126\lib\net40\WebSharper.UI.Next.Templating.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebSharper.Web">
