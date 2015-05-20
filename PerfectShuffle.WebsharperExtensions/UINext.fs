@@ -1,5 +1,7 @@
 ﻿namespace PerfectShuffle.WebsharperExtensions.UI
+open WebSharper
 
+[<JavaScript>]
 module Next =
   open WebSharper.UI.Next
   
