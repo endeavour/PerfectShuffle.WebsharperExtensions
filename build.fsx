@@ -6,7 +6,7 @@ open Fake.FileSystemHelper
 
 RestorePackages()
 
-let buildVersion = "0.1.3"
+let buildVersion = "0.1.4"
 
 // Properties
 let buildDir = "./build/"
@@ -70,7 +70,7 @@ Target "CreatePackage" (fun _ ->
               [
                 "FSharp.Data", "2.2.2"
                 "IntelliFactory.Reactive", "3.0.23.25"
-                "PerfectShuffle.Security", "0.1.1"
+                "PerfectShuffle.Security", "0.1.2"
                 "WebSharper", "3.0.59.145"
                 "WebSharper.Piglets", "3.0.50.227"
               ]}) 
