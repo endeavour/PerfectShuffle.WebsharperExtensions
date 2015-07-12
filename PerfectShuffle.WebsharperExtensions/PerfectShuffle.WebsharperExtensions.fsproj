@@ -132,6 +132,10 @@
       <HintPath>..\packages\WebSharper.3.2.11.173\lib\net40\WebSharper.JQuery.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WebSharper.JQueryUI">
+      <HintPath>..\packages\WebSharper.JQueryUI.3.2.10.259\lib\net40\WebSharper.JQueryUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebSharper.Main">
       <HintPath>..\packages\WebSharper.3.2.11.173\lib\net40\WebSharper.Main.dll</HintPath>
       <Private>True</Private>
