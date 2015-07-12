@@ -13,8 +13,18 @@ module Controls =
                        
     let config = JQueryUI.DatepickerConfiguration()
     config.DateFormat <- "d MM yy"
-    let i = WebSharper.Html.Client.Tags.Input [WebSharper.Html.Client.Attr.Type "text"]
-    let control = JQueryUI.Datepicker.New(i)  |>! WebSharper.Html.Client.Operators.OnAfterRender(fun x -> x.Option(config))
+    let i =
+      WebSharper.Html.Client.Tags.Input [WebSharper.Html.Client.Attr.Type "text"]
+      |>! WebSharper.Html.Client.EventsPervasives.OnFocus(fun x -> (JQuery.JQuery.Of(x.Dom)).Blur() |> ignore<JQuery.JQuery>)
+    let control =
+      JQueryUI.Datepicker.New(i)
+      |>! WebSharper.Html.Client.Operators.OnAfterRender(fun x ->
+        x.Option(config)
+
+        let initialDate = stream.Latest
+        match initialDate with
+        | Piglets.Result.Success(Some(date)) -> (x.SetDate(JavaScript.Date(date.Year, date.Month - 1, date.Day)))
+        | _ -> ())
 
     let getControlDate() =
       try Some(control.GetDate().Self)
