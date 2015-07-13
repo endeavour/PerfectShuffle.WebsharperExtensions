@@ -67,7 +67,7 @@ module Piglet =
           
         let setVisibility isVisible =
           if isVisible
-            then jQuery.Show() |> ignore
+            then jQuery.Css("display", "") |> ignore //JQuery.Show() adds display:inline style which isn't always what we want!
             else jQuery.Hide() |> ignore
 
         setVisibility <| not (pred (reader.Latest))
