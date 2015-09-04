@@ -6,9 +6,9 @@ open System.Runtime.InteropServices
 [<assembly: AssemblyDescriptionAttribute("Authentication and JWT tools")>]
 [<assembly: GuidAttribute("34e4036c-e16c-4cc4-84d3-820207ec5837")>]
 [<assembly: AssemblyProductAttribute("PerfectShuffle.WebsharperExtensions")>]
-[<assembly: AssemblyVersionAttribute("0.1.10")>]
-[<assembly: AssemblyFileVersionAttribute("0.1.10")>]
+[<assembly: AssemblyVersionAttribute("0.1.11")>]
+[<assembly: AssemblyFileVersionAttribute("0.1.11")>]
 do ()
 
 module internal AssemblyVersionInformation =
-    let [<Literal>] Version = "0.1.10"
+    let [<Literal>] Version = "0.1.11"
