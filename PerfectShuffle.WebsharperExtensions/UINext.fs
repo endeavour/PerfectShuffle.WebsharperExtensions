@@ -1,6 +1,7 @@
 ﻿namespace PerfectShuffle.WebsharperExtensions.UI.Next
 open WebSharper
 open WebSharper.UI.Next
+open WebSharper.UI.Next.Client
 
 [<AutoOpen>]
 module Extensions =  
@@ -18,8 +19,9 @@ module Doc =
       |> View.Const
       |> View.Map (fun el ->          
           f()
+          
           Doc.Static el)
       |> Doc.EmbedView
-
+      
   let EmbedPagelet (pagelet : WebSharper.Html.Client.Element) =
       EmbedPageletWithCustomRender pagelet (fun () -> pagelet.Render())

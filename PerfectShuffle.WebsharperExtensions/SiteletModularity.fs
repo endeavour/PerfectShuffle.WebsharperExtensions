@@ -18,6 +18,7 @@ module Context =
       }
     newContext
 
+#nowarn "44" // Obsolete CustomContent, CustomContentAsync, PageContent, PageContentAsync
 module Content =
    let map (actionMap:'a -> 'b) (content:Content<'a>) : Content<'b> =
      match content with
@@ -25,14 +26,6 @@ module Content =
      | PageContent f -> PageContent (fun context -> f (Context.map actionMap context))
      | CustomContentAsync f -> CustomContentAsync (fun context -> f (Context.map actionMap context))
      | PageContentAsync f -> PageContentAsync (fun context -> f (Context.map actionMap context))
-
-   let unasync (content:Async<Content<'action>>) : Content<'action> =
-     Content.CustomContentAsync(fun ctx ->
-         async {
-           let! content = content
-           return Content.ToResponse content ctx            
-         }
-       )
    
 module Sitelet =
   let FilterRoute (ok: 'action -> bool) (router:Router<'action>) =
@@ -70,12 +63,12 @@ module Sitelet =
 
                         if filter.VerifyUser user then
                           let resp = WebSharper.Sitelets.Content.ToResponse (sitelet.Controller.Handle action) ctx
-                          return resp
+                          return! resp
                         else
                           // Temporary redirect otherwise browser will cache it
-                          let failure = WebSharper.Sitelets.Content.RedirectTemporary (filter.LoginRedirect action)
+                          let! failure = WebSharper.Sitelets.Content.RedirectTemporary (filter.LoginRedirect action)
                           let resp = WebSharper.Sitelets.Content.ToResponse (failure) ctx
-                          return resp
+                          return! resp
                         }
               }
       }
