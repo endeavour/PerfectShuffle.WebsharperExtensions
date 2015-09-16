@@ -6,7 +6,7 @@ open Fake.FileSystemHelper
 
 RestorePackages()
 
-let buildVersion = "0.1.11"
+let buildVersion = "0.1.12"
 
 // Properties
 let buildDir = "./build/"
@@ -34,7 +34,7 @@ Target "Clean" (fun _ ->
 Target "BuildApp" (fun _ ->
     CreateFSharpAssemblyInfo "./PerfectShuffle.WebsharperExtensions/AssemblyInfo.fs"
         [Attribute.Title "PerfectShuffle.WebsharperExtensions"
-         Attribute.Description "Authentication and JWT tools"
+         Attribute.Description "Various odds and ends for Websharper projects"
          Attribute.Guid "34e4036c-e16c-4cc4-84d3-820207ec5837"
          Attribute.Product "PerfectShuffle.WebsharperExtensions"
          Attribute.Version buildVersion
@@ -74,7 +74,7 @@ Target "CreatePackage" (fun _ ->
                 "WebSharper", "3.4.14.193"
                 "WebSharper.Piglets", "3.4.8.256"
                 "WebSharper.UI.Next", "3.4.17.166"
-                "WebSharper.JQueryUI", "3.4.6.271"
+                "WebSharper.JQueryUI", "3.4.19.168"
               ]}) 
             nuspecFile
 )
