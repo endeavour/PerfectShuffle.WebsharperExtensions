@@ -6,7 +6,7 @@ open Fake.FileSystemHelper
 
 RestorePackages()
 
-let buildVersion = "0.1.12"
+let buildVersion = "0.1.13"
 
 // Properties
 let buildDir = "./build/"
@@ -74,7 +74,7 @@ Target "CreatePackage" (fun _ ->
                 "WebSharper", "3.4.14.193"
                 "WebSharper.Piglets", "3.4.8.256"
                 "WebSharper.UI.Next", "3.4.17.166"
-                "WebSharper.JQueryUI", "3.4.19.168"
+                "WebSharper.JQueryUI", "3.4.6.271"
               ]}) 
             nuspecFile
 )

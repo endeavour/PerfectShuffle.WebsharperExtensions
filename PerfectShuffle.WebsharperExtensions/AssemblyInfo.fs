@@ -3,12 +3,12 @@ open System.Reflection
 open System.Runtime.InteropServices
 
 [<assembly: AssemblyTitleAttribute("PerfectShuffle.WebsharperExtensions")>]
-[<assembly: AssemblyDescriptionAttribute("Authentication and JWT tools")>]
+[<assembly: AssemblyDescriptionAttribute("Various odds and ends for Websharper projects")>]
 [<assembly: GuidAttribute("34e4036c-e16c-4cc4-84d3-820207ec5837")>]
 [<assembly: AssemblyProductAttribute("PerfectShuffle.WebsharperExtensions")>]
-[<assembly: AssemblyVersionAttribute("0.1.11")>]
-[<assembly: AssemblyFileVersionAttribute("0.1.11")>]
+[<assembly: AssemblyVersionAttribute("0.1.13")>]
+[<assembly: AssemblyFileVersionAttribute("0.1.13")>]
 do ()
 
 module internal AssemblyVersionInformation =
-    let [<Literal>] Version = "0.1.11"
+    let [<Literal>] Version = "0.1.13"
