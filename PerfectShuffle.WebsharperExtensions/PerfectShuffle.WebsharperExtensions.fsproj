@@ -61,7 +61,6 @@
     <Content Include="packages.config" />
     <Content Include="app.config" />
     <Compile Include="Colors.fs" />
-    <Compile Include="PointerEvents.fs" />
     <Compile Include="SiteletModularity.fs" />
     <Compile Include="MarkupExtensions.fs" />
     <Compile Include="UINext.fs" />
