@@ -60,6 +60,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="app.config" />
+    <Compile Include="Touch.fs" />
     <Compile Include="Colors.fs" />
     <Compile Include="SiteletModularity.fs" />
     <Compile Include="MarkupExtensions.fs" />
@@ -89,6 +90,14 @@
     </Reference>
     <Reference Include="PerfectShuffle.Security">
       <HintPath>..\packages\PerfectShuffle.Security.0.1.4\lib\PerfectShuffle.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PerfectShuffle.WebsharperExtensions.JavascriptBindings">
+      <HintPath>..\packages\PerfectShuffle.WebsharperExtensions.JavascriptBindings.0.1.5\lib\PerfectShuffle.WebsharperExtensions.JavascriptBindings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PerfectShuffle.WebSharperExtensions.Types">
+      <HintPath>..\packages\PerfectShuffle.WebsharperExtensions.JavascriptBindings.0.1.5\lib\PerfectShuffle.WebSharperExtensions.Types.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
