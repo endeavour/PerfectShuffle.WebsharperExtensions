@@ -6,7 +6,7 @@ open Fake.FileSystemHelper
 
 RestorePackages()
 
-let buildVersion = "0.1.19"
+let buildVersion = "0.1.20"
 
 // Properties
 let buildDir = "./build/"

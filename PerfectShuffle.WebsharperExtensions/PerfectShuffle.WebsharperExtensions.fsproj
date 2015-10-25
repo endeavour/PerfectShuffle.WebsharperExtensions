@@ -94,11 +94,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PerfectShuffle.WebSharperExtensions.JavascriptBindings">
-      <HintPath>..\packages\PerfectShuffle.WebsharperExtensions.JavascriptBindings.0.1.7\lib\PerfectShuffle.WebsharperExtensions.JavascriptBindings.dll</HintPath>
+      <HintPath>..\packages\PerfectShuffle.WebsharperExtensions.JavascriptBindings.0.1.8\lib\PerfectShuffle.WebsharperExtensions.JavascriptBindings.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PerfectShuffle.WebSharperExtensions.Types">
-      <HintPath>..\packages\PerfectShuffle.WebsharperExtensions.JavascriptBindings.0.1.7\lib\PerfectShuffle.WebSharperExtensions.Types.dll</HintPath>
+      <HintPath>..\packages\PerfectShuffle.WebsharperExtensions.JavascriptBindings.0.1.8\lib\PerfectShuffle.WebSharperExtensions.Types.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
