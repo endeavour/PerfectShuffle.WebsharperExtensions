@@ -18,14 +18,12 @@ module Context =
       }
     newContext
 
-#nowarn "44" // Obsolete CustomContent, CustomContentAsync, PageContent, PageContentAsync
+#nowarn "44" // Obsolete CustomContent, CustomContentAsync
 module Content =
    let map (actionMap:'a -> 'b) (content:Content<'a>) : Content<'b> =
      match content with
      | CustomContent f -> CustomContent (fun context -> f (Context.map actionMap context))
-     | PageContent f -> PageContent (fun context -> f (Context.map actionMap context))
      | CustomContentAsync f -> CustomContentAsync (fun context -> f (Context.map actionMap context))
-     | PageContentAsync f -> PageContentAsync (fun context -> f (Context.map actionMap context))
    
 module Sitelet =
   let FilterRoute (ok: 'action -> bool) (router:Router<'action>) =

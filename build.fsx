@@ -6,7 +6,7 @@ open Fake.FileSystemHelper
 
 RestorePackages()
 
-let buildVersion = "0.1.16"
+let buildVersion = "0.1.17"
 
 // Properties
 let buildDir = "./build/"
@@ -69,13 +69,15 @@ Target "CreatePackage" (fun _ ->
             Dependencies =
               [
                 "FSharp.Data", "2.2.5"
-                "IntelliFactory.Reactive", "3.4.9.54"
+                "IntelliFactory.Reactive", "3.5.5.60"
+                "IntelliFactory.Xml", "0.6.63.95"
                 "PerfectShuffle.Security", "0.1.4"
-                "WebSharper", "3.4.19.200"
-                "WebSharper.Piglets", "3.4.9.257"
+                "WebSharper", "3.5.12.213"
+                "WebSharper.Html", "3.5.8.9"
+                "WebSharper.Piglets", "3.5.5.263"
                 "WebSharper.UI.Next", "3.4.25.175"
-                "WebSharper.JQueryUI", "3.4.7.272"
-                "PerfectShuffle.WebsharperExtensions.JavascriptBindings", "0.1.5"
+                "WebSharper.JQueryUI", "3.5.5.282"
+                "PerfectShuffle.WebsharperExtensions.JavascriptBindings", "0.1.7"
               ]}) 
             nuspecFile
 )
