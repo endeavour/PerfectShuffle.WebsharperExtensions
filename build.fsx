@@ -75,9 +75,9 @@ Target "CreatePackage" (fun _ ->
                 "WebSharper", "3.5.12.213"
                 "WebSharper.Html", "3.5.8.9"
                 "WebSharper.Piglets", "3.5.5.263"
-                "WebSharper.UI.Next", "3.4.25.175"
+                "WebSharper.UI.Next", "3.5.16.190"
                 "WebSharper.JQueryUI", "3.5.5.282"
-                "PerfectShuffle.WebsharperExtensions.JavascriptBindings", "0.1.7"
+                "PerfectShuffle.WebsharperExtensions.JavascriptBindings", "0.1.8"
               ]}) 
             nuspecFile
 )
