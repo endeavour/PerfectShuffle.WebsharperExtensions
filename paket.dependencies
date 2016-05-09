@@ -1,0 +1,11 @@
+source https://www.nuget.org/api/v2
+
+nuget IntelliFactory.Reactive
+nuget IntelliFactory.Xml
+nuget PerfectShuffle.Security
+nuget PerfectShuffle.WebsharperExtensions.JavascriptBindings
+nuget WebSharper
+nuget WebSharper.Html
+nuget WebSharper.JQueryUI
+nuget WebSharper.Piglets
+nuget WebSharper.UI.Next
