@@ -1,4 +1,4 @@
-﻿namespace PerfectShuffle.EventSourcing.AssemblyInfo
+﻿namespace PerfectShuffle.WebsharperExtensions.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -12,7 +12,7 @@ open System.Runtime.InteropServices
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
 [<assembly: AssemblyProductAttribute("PerfectShuffle.WebsharperExtensions")>]
-[<assembly: AssemblyCopyright("Copyright ©  2016")>]
+[<assembly: AssemblyCopyright("Copyright © 2016")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
 

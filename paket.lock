@@ -2,6 +2,7 @@ NUGET
   remote: https://www.nuget.org/api/v2
   specs:
     BouncyCastle (1.8.1)
+    FAKE (4.25.5)
     FSharp.Data (2.3)
       Zlib.Portable (>= 1.11) - framework: portable-net45+sl5+win8, portable-net45+win8, portable-net45+win8+wp8+wpa81
     IntelliFactory.Reactive (3.6.8.69)
@@ -11,8 +12,8 @@ NUGET
       BouncyCastle
       FSharp.Data
       System.IdentityModel.Tokens.Jwt
-    PerfectShuffle.WebsharperExtensions.JavascriptBindings (0.1.8)
-      WebSharper (>= 3.5.12.213)
+    PerfectShuffle.WebSharperExtensions.JavascriptBindings (0.2.5973.23770)
+      WebSharper
     System.IdentityModel.Tokens.Jwt (4.0.2.206221351)
     WebSharper (3.6.11.234)
     WebSharper.Html (3.6.9.21)
