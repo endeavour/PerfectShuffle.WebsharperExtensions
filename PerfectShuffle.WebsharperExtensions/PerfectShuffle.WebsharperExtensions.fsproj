@@ -62,6 +62,7 @@
     <Compile Include="Piglets.fs" />
     <Compile Include="Security.fs" />
     <Compile Include="SinglePageApplications.fs" />
+    <Compile Include="AssemblyInfo.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
